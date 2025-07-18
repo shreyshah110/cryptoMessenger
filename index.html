@@ -1,0 +1,108 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CryptoLock Messenger 🔐</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+
+  <style>
+    textarea, input[type="number"] {
+      background: #111;
+      color: #0ff;
+      border: 2px solid #0ff;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 10px;
+      width: 100%;
+      box-shadow: 0 0 8px #0ff, 0 0 16px #0ff5;
+      resize: vertical;
+    }
+    button {
+      background-color: #0ff;
+      color: #000;
+      padding: 10px 15px;
+      margin: 5px 0;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+      transform: scale(1.03);
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <img src="logo.png" class="logo-small" alt="Logo" />
+      <span class="brand-text">CryptoLock Messenger</span>
+    </div>
+  </nav>
+
+  <main class="main-wrapper">
+    <div class="container">
+      <div class="card">
+        <div class="toggle-theme">
+          <button onclick="toggleTheme()">🌃 Toggle Dark/Light</button>
+        </div>
+
+        <h1>CryptoLock Messenger 🔐</h1>
+        <p class="byline">by Shrey</p>
+
+        <!-- AES + RSA -->
+        <label for="message">Your Message:</label>
+        <textarea id="message" placeholder="Type your secret message..."></textarea>
+        <button onclick="encryptMessage()">🔐 Encrypt</button>
+
+        <label for="encryptedMessage">Encrypted Message:</label>
+        <textarea id="encryptedMessage" readonly></textarea>
+
+        <label for="encryptedKey">Encrypted AES Key:</label>
+        <textarea id="encryptedKey" readonly></textarea>
+
+        <button onclick="decryptMessage()">🔓 Decrypt</button>
+
+        <label for="decryptedMessage">Decrypted Message:</label>
+        <textarea id="decryptedMessage" readonly></textarea>
+
+        <!-- Caesar Cipher -->
+        <hr>
+        <h2>🔤 Caesar Cipher</h2>
+        <label for="caesarInput">Input Text:</label>
+        <textarea id="caesarInput" placeholder="Enter text..."></textarea>
+
+        <label for="shift">Shift Value:</label>
+        <input type="number" id="shift" value="3">
+
+        <button onclick="encryptCaesar()">🔐 Caesar Encrypt</button>
+        <button onclick="decryptCaesar()">🔓 Caesar Decrypt</button>
+
+        <label for="caesarResult">Result:</label>
+        <textarea id="caesarResult" readonly></textarea>
+
+        <!-- Menu to Mono Page -->
+        <hr>
+        <h2>Other Tools</h2>
+        <a href="mono.html">
+          <button>🔠 Monoalphabetic Cipher</button>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+/* 🌌 CyberGlow - Fully Responsive + Fixed Alignment + Animations */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle at center, #0d0f1a 0%, #000000 100%);
+  color: #fff;
+  overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body.light {
+  background: #f5f5f5;
+  color: #111;
+}
+
+/* ✅ Navbar */
+.navbar {
+  width: 100%;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 20px;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  animation: slideDown 0.8s ease-out forwards;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-small {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #00f5ff;
+  animation: glowPulse 2s infinite alternate;
+}
+
+@keyframes glowPulse {
+  from {
+    box-shadow: 0 0 8px #00f5ff;
+  }
+  to {
+    box-shadow: 0 0 18px #00f5ff, 0 0 28px #00f5ff;
+  }
+}
+
+.brand-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: #bffcff;
+  text-shadow: 0 0 8px #00ffe5;
+}
+
+/* ✅ Main Content */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 16px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.card {
+  width: 100%;
+  max-width: 720px;
+  background: #11131a;
+  padding: 30px;
+  border-radius: 18px;
+  border: 2px solid #000;
+  box-shadow:
+    0 0 10px rgba(0, 255, 255, 0.2),
+    0 0 20px rgba(255, 0, 255, 0.15),
+    0 0 25px rgba(0, 255, 0, 0.1);
+  transition: background 0.3s ease, color 0.3s ease;
+  animation: popIn 0.6s ease forwards;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+body.light .card {
+  background: #ffffff;
+  color: #111;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+}
+
+/* ✅ Typography */
+h1 {
+  text-align: center;
+  font-size: 28px;
+  color: #ffffff;
+  margin-bottom: 0;
+  text-shadow: 0 0 6px #00ffe0;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+body.light h1 {
+  color: #222;
+  text-shadow: none;
+}
+
+.byline {
+  text-align: center;
+  font-size: 13px;
+  color: #aaa;
+  margin-bottom: 20px;
+  animation: fadeIn 1.8s ease forwards;
+}
+
+/* ✅ Inputs & Textareas (Perfect Alignment) */
+textarea,
+input[type="number"],
+input[type="text"] {
+  display: block;
+  width: 100%;
+  margin: 12px 0;
+  padding: 14px;
+  border-radius: 12px;
+  border: 2px solid #0ff;
+  background: #1c1f2b;
+  color: #fff;
+  resize: none;
+  font-size: 14px;
+  line-height: 1.4;
+  box-shadow: 0 0 8px #0ff, 0 0 16px #0ff5;
+  transition: 0.3s ease;
+  box-sizing: border-box;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body.light textarea,
+body.light input[type="number"],
+body.light input[type="text"] {
+  background: #f0f0f0;
+  color: #000;
+  border: 1px solid #ccc;
+  box-shadow: none;
+}
+
+label {
+  font-weight: bold;
+  color: #ccc;
+  margin-top: 10px;
+  display: block;
+}
+
+body.light label {
+  color: #333;
+}
+
+/* ✅ Buttons */
+button {
+  width: 100%;
+  margin: 14px 0;
+  padding: 14px;
+  background: linear-gradient(90deg, #00f0ff, #ff00f0, #00ff6a);
+  background-size: 300% 300%;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+  animation: rgbButtonGlow 3s ease infinite;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+  font-family: 'Orbitron', sans-serif;
+}
+
+button:hover {
+  filter: brightness(1.1);
+  transform: scale(1.02);
+}
+
+@keyframes rgbButtonGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.toggle-theme {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* ✅ Responsive Design */
+@media (max-width: 600px) {
+  .container {
+    padding: 40px 12px;
+  }
+
+  .card {
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .brand-text {
+    font-size: 18px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  textarea,
+  input[type="number"],
+  input[type="text"] {
+    font-size: 13px;
+    padding: 10px;
+  }
+}

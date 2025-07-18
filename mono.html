@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Monoalphabetic Cipher</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <img src="logo.png" class="logo-small" alt="Logo" />
+      <span class="brand-text">Monoalphabetic Cipher</span>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="card">
+      <h1>🔠 Monoalphabetic Cipher</h1>
+      <p class="byline">Encrypt or Decrypt using a 26-letter key</p>
+
+      <label for="monoInput">Input Message:</label>
+      <textarea id="monoInput" placeholder="Enter your message..."></textarea>
+
+      <label for="monoKey">Key (A–Z permutation):</label>
+      <input type="text" id="monoKey" maxlength="26" placeholder="e.g. QWERTYUIOPASDFGHJKLZXCVBNM" />
+
+      <button onclick="encryptMono()">🔐 Encrypt</button>
+      <button onclick="decryptMono()">🔓 Decrypt</button>
+
+      <label for="monoResult">Result:</label>
+      <textarea id="monoResult" readonly></textarea>
+
+      <a href="index.html">
+        <button>⬅️ Back to Home</button>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function encryptMono() {
+      const input = document.getElementById("monoInput").value.toUpperCase();
+      const key = document.getElementById("monoKey").value.toUpperCase();
+      const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+      if (key.length !== 26 || new Set(key).size !== 26) {
+        alert("Key must be a 26-letter unique permutation.");
+        return;
+      }
+
+      const encrypted = input.split('').map(char => {
+        const index = alphabet.indexOf(char);
+        return index !== -1 ? key[index] : char;
+      }).join('');
+
+      document.getElementById("monoResult").value = encrypted;
+    }
+
+    function decryptMono() {
+      const input = document.getElementById("monoInput").value.toUpperCase();
+      const key = document.getElementById("monoKey").value.toUpperCase();
+      const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+      if (key.length !== 26 || new Set(key).size !== 26) {
+        alert("Key must be a 26-letter unique permutation.");
+        return;
+      }
+
+      const decrypted = input.split('').map(char => {
+        const index = key.indexOf(char);
+        return index !== -1 ? alphabet[index] : char;
+      }).join('');
+
+      document.getElementById("monoResult").value = decrypted;
+    }
+  </script>
+</body>
+</html>
