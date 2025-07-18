@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Monoalphabetic Cipher 🔠</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <img src="logo.png" class="logo-small" alt="Logo" />
+      <span class="brand-text">Monoalphabetic Cipher</span>
+    </div>
+  </nav>
+
+  <main class="main-wrapper">
+    <div class="container">
+      <div class="card">
+        <div class="toggle-theme">
+          <button onclick="toggleTheme()">🌗 Toggle Dark/Light</button>
+        </div>
+
+        <h1>Monoalphabetic Cipher 🔠</h1>
+        <p class="byline">Secure letter substitution</p>
+
+        <label for="monoInput">Your Message:</label>
+        <textarea id="monoInput" placeholder="Type your message..."></textarea>
+
+        <label for="customKey">Cipher Key (26 unique A-Z letters):</label>
+        <input id="customKey" type="text" placeholder="E.g. QWERTYUIOPASDFGHJKLZXCVBNM" maxlength="26" />
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <button onclick="generateRandomKey()">🔀 Generate Random Key</button>
+          <button onclick="clearKey()">✍️ Manual Key Input</button>
+        </div>
+
+        <button onclick="encryptMono()">🔐 Encrypt</button>
+
+        <label for="monoEncrypted">Encrypted Message:</label>
+        <textarea id="monoEncrypted" readonly></textarea>
+
+        <button onclick="decryptMono()">🔓 Decrypt</button>
+
+        <label for="monoDecrypted">Decrypted Message:</label>
+        <textarea id="monoDecrypted" readonly></textarea>
+
+        <hr>
+        <a href="index.html"><button>🔙 Back to CryptoLock Messenger</button></a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const defaultKey = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+
+    function getValidKey() {
+      let inputKey = document.getElementById('customKey').value.toUpperCase();
+      if (inputKey.length !== 26 || new Set(inputKey).size !== 26) {
+        alert('❌ Invalid key! Using default key.');
+        return defaultKey;
+      }
+      return inputKey;
+    }
+
+    function encryptMono() {
+      const input = document.getElementById('monoInput').value.toUpperCase();
+      const key = getValidKey();
+      let result = '';
+
+      for (let char of input) {
+        const index = alphabet.indexOf(char);
+        result += index !== -1 ? key[index] : char;
+      }
+
+      document.getElementById('monoEncrypted').value = result;
+    }
+
+    function decryptMono() {
+      const cipher = document.getElementById('monoEncrypted').value.toUpperCase();
+      const key = getValidKey();
+      let result = '';
+
+      for (let char of cipher) {
+        const index = key.indexOf(char);
+        result += index !== -1 ? alphabet[index] : char;
+      }
+
+      document.getElementById('monoDecrypted').value = result;
+    }
+
+    function generateRandomKey() {
+      const shuffled = alphabet.split('').sort(() => 0.5 - Math.random()).join('');
+      document.getElementById('customKey').value = shuffled;
+    }
+
+    function clearKey() {
+      document.getElementById('customKey').value = '';
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light');
+      }
+    }
+  </script>
+</body>
+</html>
